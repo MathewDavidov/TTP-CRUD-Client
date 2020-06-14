@@ -3,11 +3,18 @@ import { Link } from "react-router-dom";
 
 const AllStudentsView = (props) => {
     if (!props.allStudents.length) {
-        return <div>There are no students</div>;
+        return (
+            <>
+                <Link to="/students/new" className="btn btn-success">
+                    New Student
+                </Link>
+                <div>There are no students</div>
+            </>
+        );
     }
 
     return (
-        <div className="jumbotron">
+        <div className="jumbotron mt-5">
             <h1 className="display-4 text-dark">Students:</h1>
             {props.allStudents.map((student) => (
                 <div key={student.id}>
@@ -16,6 +23,9 @@ const AllStudentsView = (props) => {
                     </Link>
                 </div>
             ))}
+            <Link to="/students/new" className="btn btn-success">
+                New Student
+            </Link>
         </div>
     )
 }
