@@ -1,18 +1,9 @@
 import React from "react";
 
 const StudentView = (props) => {
-    let campus;
-    if (props.student.campus) {
-        campus = (
-            <p>{props.student.campus.name}</p>
-        );
-    } else {
-        campus = <p>The student does not have a campus.</p>;
-    }
-
     return (
         <>
-            <div className="card text-center mt-3 mb-3 text-dark" key={campus.id} style={{ width: 30 + "rem" }}>
+            <div className="card text-center mt-3 mb-3 text-dark" key={props.student.id} style={{ width: 30 + "rem" }}>
                 <div className="card-header">
                     <h3>{props.student.firstName} {props.student.lastName}</h3>
                 </div>
@@ -22,10 +13,12 @@ const StudentView = (props) => {
                     <p>{props.student.gpa}</p>
                 </div>
                 <div className="card-footer">
-                    {campus}
-                    {/* <button className="btn btn-danger" onClick={() => props.handleDelete(campus.id)}>
+                    {/* <Link className="btn btn-warning" to={`/campuses/${props.campus.id}/edit`}>
+                        Edit
+                    </Link> */}
+                    <button className="btn btn-danger" onClick={() => props.handleDelete(props.student.id)}>
                         Delete
-                    </button> */}
+                    </button>
                 </div>
             </div>
         </>
