@@ -3,6 +3,7 @@ import Axios from "axios";
 // ACTION TYPES
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const ENROLL_STUDENT = "ENROLL_STUDENT";
+const ADD_STUDENT = "ADD_STUDENT";
 const DELETE_STUDENT = "DELETE_STUDENT";
 
 // ACTION CREATORS
@@ -19,6 +20,13 @@ const enrollStudent = (student) => {
     payload: student,
   };
 };
+
+const addStudent = (student) => {
+    return {
+        type: ADD_STUDENT,
+        payload: student,
+    }
+}
 
 const deleteStudent = (id) => {
     return {
@@ -44,6 +52,18 @@ export const enrollStudentThunk = (campusId, studentId) => (dispatch) => {
         .catch((err) => console.log(err));
 };
 
+export const addStudentThunk = (student, ownProps) => (dispatch) => {
+    return Axios
+        .post(`/api/students/`, student)
+        .then((res) => res.data)
+        .then((newStudent) => {
+            const tweakedStudent = { ...newStudent/*, campus = {}*/ };
+            dispatch(addStudent(tweakedStudent));
+            ownProps.history.push(`/students/${newStudent.id}`);
+        })
+        .catch((error) => console.log(error));
+}
+
 export const deleteStudentThunk = (id) => (dispatch) => {
     return Axios
         .delete(`/api/students/${id}`)
@@ -61,6 +81,8 @@ const reducer = (state = [], action) => {
             return state.map((student) =>
                 student.id === action.payload.id ? action.payload : student
             );
+        case ADD_STUDENT:
+            return [...state, action.payload];
         case DELETE_STUDENT:
             return state.filter((student) => student.id !== action.payload);
         default:
