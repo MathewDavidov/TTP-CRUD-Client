@@ -1,16 +1,15 @@
-import axios from "axios";
+import Axios from "axios";
 
 // ACTION TYPES
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const ENROLL_STUDENT = "ENROLL_STUDENT";
 
 // ACTION CREATORS
-
 const fetchAllStudents = (students) => {
-  return {
-    type: FETCH_ALL_STUDENTS,
-    payload: students,
-  };
+    return {
+        type: FETCH_ALL_STUDENTS,
+        payload: students,
+    }
 };
 
 const enrollStudent = (student) => {
@@ -20,14 +19,13 @@ const enrollStudent = (student) => {
   };
 };
 
-// THUNK CREATORS
-
+// THUNKS
 export const fetchAllStudentsThunk = () => (dispatch) => {
-  return axios
-    .get("/api/students")
-    .then((res) => res.data)
-    .then((students) => dispatch(fetchAllStudents(students)))
-    .catch((err) => console.log(err));
+    return Axios
+        .get("/api/students")
+        .then((res) => res.data)
+        .then((students) => dispatch(fetchAllStudents(students)))
+        .catch((error) => console.log(error));
 };
 
 export const enrollStudentThunk = (campusId, studentId) => (dispatch) => {
@@ -38,18 +36,17 @@ export const enrollStudentThunk = (campusId, studentId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// REDUCER
+// REDUCERS
 const reducer = (state = [], action) => {
-  switch (action.type) {
-    case FETCH_ALL_STUDENTS:
-      return action.payload;
-    case ENROLL_STUDENT:
-      return state.map((student) =>
-        student.id === action.payload.id ? action.payload : student
-      );
-    default:
-      return state;
-  }
-};
+    switch (action.type) {
+        case FETCH_ALL_STUDENTS:
+            return action.payload;
+        case ENROLL_STUDENT:
+            return state.map((student) =>
+                student.id === action.payload.id ? action.payload : student
+            );
+        default:
+            return state;
+}
 
 export default reducer;
