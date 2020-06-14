@@ -7,7 +7,8 @@ const AllStudentsView = (props) => {
     }
 
     return (
-        <div>
+        <div className="jumbotron">
+            <h1 className="display-4 text-dark">Students:</h1>
             {props.allStudents.map((student) => (
                 <div key={student.id}>
                     <Link to={`/students/${student.id}`}>

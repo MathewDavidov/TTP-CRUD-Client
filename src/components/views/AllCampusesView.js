@@ -5,28 +5,40 @@ import { Link } from "react-router-dom";
 
 const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
-    return <div className="all-campuses">There are no campuses</div>;
+    return (
+      <>
+        <Link to="/campuses/new" className="btn btn-primary">
+          New Campus
+        </Link>
+        <div className="all-campuses">There are no campuses</div>
+      </>
+    );
   }
 
   return (
     <div className="all-campuses">
-      <Link to="/campuses/new" className="add-campus">
-        New Campus
-      </Link>
-      <div>
-        {props.allCampuses.map((campus) => (
-          <div key={campus.id}>
+      <h1 className="display-4">Campuses:</h1>
+      {props.allCampuses.map((campus) => (
+        <div className="card text-center mt-3 mb-3" key={campus.id} style={{ width: 45 + "rem" }}>
+          <div className="card-header">
             <Link to={`/campuses/${campus.id}`}>
-              <h1>{campus.name}</h1>
+              <h3>{campus.name}</h3>
             </Link>
+          </div>
+          <div className="card-body">
             <img src={campus.imageUrl} width="200px" alt={campus.name} />
             <p>{campus.students.length} students</p>
-            <button onClick={() => props.handleDelete(campus.id)}>
+          </div>
+          <div className="card-footer">
+            <button className="btn btn-danger" onClick={() => props.handleDelete(campus.id)}>
               Delete
             </button>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+      <Link to="/campuses/new" className="btn btn-primary">
+        New Campus
+      </Link>
     </div>
   );
 };

@@ -12,11 +12,22 @@ const StudentView = (props) => {
 
     return (
         <>
-            <img src={props.student.imageUrl} alt={props.student.firstName} />
-            <h1>{props.student.firstName} {props.student.lastName}</h1>
-            <h3>{props.student.email}</h3>
-            <p>{props.student.gpa}</p>
-            {campus}
+            <div className="card text-center mt-3 mb-3 text-dark" key={campus.id} style={{ width: 30 + "rem" }}>
+                <div className="card-header">
+                    <h3>{props.student.firstName} {props.student.lastName}</h3>
+                </div>
+                <div className="card-body">
+                    <img src={props.student.imageUrl} alt={props.student.firstName} />
+                    <h6>{props.student.email}</h6>
+                    <p>{props.student.gpa}</p>
+                </div>
+                <div className="card-footer">
+                    {campus}
+                    {/* <button className="btn btn-danger" onClick={() => props.handleDelete(campus.id)}>
+                        Delete
+                    </button> */}
+                </div>
+            </div>
         </>
     );
 }
