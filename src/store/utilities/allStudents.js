@@ -29,11 +29,11 @@ export const fetchAllStudentsThunk = () => (dispatch) => {
 };
 
 export const enrollStudentThunk = (campusId, studentId) => (dispatch) => {
-  return axios
-    .put(`/api/students/${studentId}`, { campusId: campusId })
-    .then((res) => res.data)
-    .then((student) => dispatch(enrollStudent(student)))
-    .catch((err) => console.log(err));
+    return Axios
+        .put(`/api/students/${studentId}`, { campusId: campusId })
+        .then((res) => res.data)
+        .then((student) => dispatch(enrollStudent(student)))
+        .catch((err) => console.log(err));
 };
 
 // REDUCERS
@@ -47,6 +47,7 @@ const reducer = (state = [], action) => {
             );
         default:
             return state;
+    }
 }
 
 export default reducer;
