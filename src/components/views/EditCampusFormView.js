@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 
 const EditCampusFormView = (props) => {
   return (
-    <div>
+    <div className="jumbotron text-dark mt-5">
+      <p className="lead">Emdit Campus Information</p>
       <form onSubmit={props.handleSubmit}>
-        <div>
+        <div className="form-group">
           Name:{" "}
           <input
             value={props.name}
@@ -13,7 +14,7 @@ const EditCampusFormView = (props) => {
             onChange={props.handleChange}
           ></input>
         </div>
-        <div>
+        <div className="form-group">
           Address:{" "}
           <input
             value={props.address}
@@ -21,7 +22,7 @@ const EditCampusFormView = (props) => {
             onChange={props.handleChange}
           ></input>
         </div>
-        <div>
+        <div className="form-group">
           Description:{" "}
           <input
             value={props.description}
@@ -29,7 +30,7 @@ const EditCampusFormView = (props) => {
             onChange={props.handleChange}
           ></input>
         </div>
-        <div>
+        <div className="form-group">
           Image Url:{" "}
           <input
             value={props.imageUrl}
@@ -37,7 +38,7 @@ const EditCampusFormView = (props) => {
             onChange={props.handleChange}
           ></input>
         </div>
-        <button>Edit Campus</button>
+        <button className="btn btn-success">Edit Campus</button>
       </form>
     </div>
   );
