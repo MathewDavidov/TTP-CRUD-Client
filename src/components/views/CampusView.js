@@ -8,7 +8,7 @@ import {
 const CampusView = (props) => {
   return (
     <>
-      <div className="card text-center mt-3 mb-3 text-dark" key={props.campus.id} style={{ width: 45 + "rem" }}>
+      <div className="card text-center mt-5 mb-5 text-dark" key={props.campus.id} style={{ width: 45 + "rem" }}>
         <div className="card-header">
           <h1>{props.campus.name}</h1>
         </div>

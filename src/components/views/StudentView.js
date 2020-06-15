@@ -26,8 +26,8 @@ const StudentView = (props) => {
                     {campus}
 
                     <hr class="my-4" />
-                    {/* <AddCampusToStudentContainer studentId={props.student.id}
-                        handleEnrollInCampus={props.handleEnrollInCampus}/> */}
+                    <AddCampusToStudentContainer studentId={props.student.id}
+                        handleEnrollInCampus={props.handleEnrollInCampus}/>
                 </div>
                 <div className="card-footer">
                     <Link className="btn btn-warning mr-1" to={`/students/${props.student.id}/edit`}>
