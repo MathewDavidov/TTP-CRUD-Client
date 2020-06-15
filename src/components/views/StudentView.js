@@ -20,16 +20,16 @@ const StudentView = (props) => {
                 <div className="card-body">
                     <img src={props.student.imageUrl} alt={props.student.firstName} />
                     <h6>{props.student.email}</h6>
-                    <p>{props.student.gpa}</p>
+                    <p>{props.student.gpa} GPA</p>
                     {campus}
                     {/* <AddCampusToStudentContainer studentId={props.student.id}
                         handleEnrollInCampus={props.handleEnrollInCampus}/> */}
                 </div>
                 <div className="card-footer">
-                    <Link className="btn btn-warning" to={`/students/${props.student.id}/edit`}>
+                    <Link className="btn btn-warning mr-1" to={`/students/${props.student.id}/edit`}>
                         Edit
                     </Link>
-                    <button className="btn btn-danger" onClick={() => props.handleDelete(props.student.id)}>
+                    <button className="btn btn-danger ml-1" onClick={() => props.handleDelete(props.student.id)}>
                         Delete
                     </button>
                 </div>

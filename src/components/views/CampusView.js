@@ -29,10 +29,10 @@ const CampusView = (props) => {
           />
         </div>
         <div className="card-footer">
-          <Link className="btn btn-warning" to={`/campuses/${props.campus.id}/edit`}>
+          <Link className="btn btn-warning mr-1" to={`/campuses/${props.campus.id}/edit`}>
             Edit
           </Link>
-          <button className="btn btn-danger" onClick={() => props.handleDelete(props.campus.id)}>
+          <button className="btn btn-danger ml-1" onClick={() => props.handleDelete(props.campus.id)}>
             Delete
           </button>
         </div>
