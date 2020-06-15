@@ -13,7 +13,7 @@ const StudentNameListView = (props) => {
         <p>{props.students.length} Students</p>
           {props.students.map((student) => (
             <div key={student.id} className="student-name">
-              <Link to={`/students/${student.id}`}>{student.firstName}</Link>
+              <Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link>
             </div>
           ))}
       </div>
