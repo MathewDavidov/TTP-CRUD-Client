@@ -1,6 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { AddCampusToStudentContainer } from "../containers"
 
 const StudentView = (props) => {
+    let campus;
+    console.log(props.student.campus);
+    if (props.student.campus) {
+        campus = <Link to={`/campuses/${props.student.campus.id}`}>{props.student.campus.name}</Link>
+    } else {
+        campus = <p>Not enrolled at a campus.</p>
+    }
+
     return (
         <>
             <div className="card text-center mt-3 mb-3 text-dark" key={props.student.id} style={{ width: 30 + "rem" }}>
@@ -11,11 +21,14 @@ const StudentView = (props) => {
                     <img src={props.student.imageUrl} alt={props.student.firstName} />
                     <h6>{props.student.email}</h6>
                     <p>{props.student.gpa}</p>
+                    {campus}
+                    {/* <AddCampusToStudentContainer studentId={props.student.id}
+                        handleEnrollInCampus={props.handleEnrollInCampus}/> */}
                 </div>
                 <div className="card-footer">
-                    {/* <Link className="btn btn-warning" to={`/campuses/${props.campus.id}/edit`}>
+                    <Link className="btn btn-warning" to={`/students/${props.student.id}/edit`}>
                         Edit
-                    </Link> */}
+                    </Link>
                     <button className="btn btn-danger" onClick={() => props.handleDelete(props.student.id)}>
                         Delete
                     </button>

@@ -4,6 +4,7 @@ import Axios from "axios";
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const ENROLL_STUDENT = "ENROLL_STUDENT";
 const ADD_STUDENT = "ADD_STUDENT";
+const EDIT_STUDENT = "EDIT_STUDENT";
 const DELETE_STUDENT = "DELETE_STUDENT";
 
 // ACTION CREATORS
@@ -24,6 +25,13 @@ const enrollStudent = (student) => {
 const addStudent = (student) => {
     return {
         type: ADD_STUDENT,
+        payload: student,
+    }
+}
+
+const editStudent = (student) => {
+    return {
+        type: EDIT_STUDENT,
         payload: student,
     }
 }
@@ -64,6 +72,16 @@ export const addStudentThunk = (student, ownProps) => (dispatch) => {
         .catch((error) => console.log(error));
 }
 
+export const editStudentThunk = (id, student) => (dispatch) => {
+    return Axios
+        .put(`/api/students/${id}`, student)
+        .then((res) => res.data)
+        .then((updatedStudent) => {
+            dispatch(editStudent(updatedStudent));
+        })
+        .catch((err) => console.log(err));
+}
+
 export const deleteStudentThunk = (id) => (dispatch) => {
     return Axios
         .delete(`/api/students/${id}`)
@@ -83,6 +101,10 @@ const reducer = (state = [], action) => {
             );
         case ADD_STUDENT:
             return [...state, action.payload];
+        case EDIT_STUDENT:
+            return state.map((student) =>
+                student.id === action.payload.id ? action.payload : student
+            );
         case DELETE_STUDENT:
             return state.filter((student) => student.id !== action.payload);
         default:
