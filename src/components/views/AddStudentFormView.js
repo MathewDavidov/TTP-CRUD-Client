@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const AddStudentFormView = (props) => {
     return (
         <div className="jumbotron text-dark mt-5">
+            <p className="lead" style={{ fontWeight: "bold" }}>Add New Student</p>
             <p className="lead">Emails must be unique and GPA is between 0.0 and 4.0</p>
             <form onSubmit={props.handleSubmit}>
                 <div className="form-group">
