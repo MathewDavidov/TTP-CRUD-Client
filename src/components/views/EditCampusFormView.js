@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const EditCampusFormView = (props) => {
   return (
     <div className="jumbotron text-dark mt-5">
-      <p className="lead">Emdit Campus Information</p>
+      <p className="lead">Edit Campus Information</p>
       <form onSubmit={props.handleSubmit}>
         <div className="form-group">
           Name:{" "}
