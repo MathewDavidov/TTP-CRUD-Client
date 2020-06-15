@@ -20,8 +20,12 @@ const StudentView = (props) => {
                 <div className="card-body">
                     <img src={props.student.imageUrl} alt={props.student.firstName} />
                     <h6>{props.student.email}</h6>
+
+                    <hr class="my-4" />
                     <p>{props.student.gpa} GPA</p>
                     {campus}
+
+                    <hr class="my-4" />
                     {/* <AddCampusToStudentContainer studentId={props.student.id}
                         handleEnrollInCampus={props.handleEnrollInCampus}/> */}
                 </div>
