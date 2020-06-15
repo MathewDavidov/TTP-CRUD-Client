@@ -19,7 +19,7 @@ const AllCampusesView = (props) => {
     <div className="all-campuses">
       <h1 className="display-4">Campuses:</h1>
       {props.allCampuses.map((campus) => (
-        <div className="card text-center mt-3 mb-3" key={campus.id} style={{ width: 45 + "rem" }}>
+        <div className="card text-center mt-5 mb-5" key={campus.id} style={{ width: 45 + "rem" }}>
           <div className="card-header">
             <Link to={`/campuses/${campus.id}`}>
               <h3>{campus.name}</h3>
@@ -36,7 +36,7 @@ const AllCampusesView = (props) => {
           </div>
         </div>
       ))}
-      <Link to="/campuses/new" className="btn btn-success">
+      <Link to="/campuses/new" className="btn btn-success mt-5 mb-5">
         New Campus
       </Link>
     </div>
